@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgriSens 智慧农业AI助手</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container">
+            <h1>AgriSens 智慧农业AI助手</h1>
+            <p>为种植户和农场主提供全方位的农业生产支持</p>
+        </div>
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#crop-manual">作物手册</a></li>
+                <li><a href="#weather">天气查询</a></li>
+                <li><a href="#disease">病虫害识别</a></li>
+                <li><a href="#crop-recommend">作物推荐</a></li>
+                <li><a href="#fertilizer">施肥推荐</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 首页 -->
+    <section id="home" class="section">
+        <div class="container">
+            <div class="features">
+                <h2>核心功能</h2>
+                <div class="feature-grid">
+                    <div class="feature-card" data-target="#crop-manual">
+                        <div class="feature-icon">🌱</div>
+                        <h3>作物手册查询</h3>
+                        <p>选择作物，获取详细的种植指南</p>
+                    </div>
+                    <div class="feature-card" data-target="#weather">
+                        <div class="feature-icon">🌤️</div>
+                        <h3>实时天气查询</h3>
+                        <p>查询未来7天天气，合理安排农事</p>
+                    </div>
+                    <div class="feature-card" data-target="#disease">
+                        <div class="feature-icon">🔍</div>
+                        <h3>病虫害识别</h3>
+                        <p>上传叶片图片，识别病虫害并获取防治方案</p>
+                    </div>
+                    <div class="feature-card" data-target="#crop-recommend">
+                        <div class="feature-icon">📊</div>
+                        <h3>作物推荐</h3>
+                        <p>根据土壤成分，推荐适宜种植的作物</p>
+                    </div>
+                    <div class="feature-card" data-target="#fertilizer">
+                        <div class="feature-icon">💧</div>
+                        <h3>施肥推荐</h3>
+                        <p>根据土壤成分和目标作物，推荐合理的施肥方案</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作物手册查询 -->
+    <section id="crop-manual" class="section">
+        <div class="container">
+            <h2>作物手册查询</h2>
+            <div class="form-group">
+                <label for="crop-select">选择作物：</label>
+                <select id="crop-select">
+                    <option value="">请选择作物</option>
+                    <option value="rice">水稻</option>
+                    <option value="wheat">小麦</option>
+                    <option value="corn">玉米</option>
+                    <option value="soybean">大豆</option>
+                    <option value="cotton">棉花</option>
+                </select>
+            </div>
+            <div id="crop-guide" class="result">
+                请选择作物查看种植指南
+            </div>
+        </div>
+    </section>
+
+    <!-- 天气查询 -->
+    <section id="weather" class="section">
+        <div class="container">
+            <h2>实时天气查询</h2>
+            <div class="form-group">
+                <label for="city-input">输入城市：</label>
+                <input type="text" id="city-input" placeholder="例如：北京">
+                <button id="weather-btn" class="btn">查询</button>
+            </div>
+            <div id="weather-result" class="result">
+                请输入城市名称并点击查询
+            </div>
+        </div>
+    </section>
+
+    <!-- 病虫害识别 -->
+    <section id="disease" class="section">
+        <div class="container">
+            <h2>病虫害识别</h2>
+            <div class="form-group">
+                <label for="image-upload">上传叶片图片：</label>
+                <input type="file" id="image-upload" accept="image/*">
+                <button id="identify-btn" class="btn">识别</button>
+            </div>
+            <div id="disease-result" class="result">
+                请上传叶片图片并点击识别
+            </div>
+        </div>
+    </section>
+
+    <!-- 作物推荐 -->
+    <section id="crop-recommend" class="section">
+        <div class="container">
+            <h2>作物推荐</h2>
+            <div class="form-group">
+                <label for="nitrogen">氮含量（%）：</label>
+                <input type="number" id="nitrogen" step="0.1" placeholder="0-5">
+            </div>
+            <div class="form-group">
+                <label for="phosphorus">磷含量（%）：</label>
+                <input type="number" id="phosphorus" step="0.1" placeholder="0-5">
+            </div>
+            <div class="form-group">
+                <label for="potassium">钾含量（%）：</label>
+                <input type="number" id="potassium" step="0.1" placeholder="0-5">
+            </div>
+            <div class="form-group">
+                <label for="ph">pH值：</label>
+                <input type="number" id="ph" step="0.1" placeholder="4-10">
+            </div>
+            <button id="recommend-btn" class="btn">推荐</button>
+            <div id="recommend-result" class="result">
+                请输入土壤成分并点击推荐
+            </div>
+        </div>
+    </section>
+
+    <!-- 施肥推荐 -->
+    <section id="fertilizer" class="section">
+        <div class="container">
+            <h2>施肥推荐</h2>
+            <div class="form-group">
+                <label for="target-crop">目标作物：</label>
+                <select id="target-crop">
+                    <option value="">请选择作物</option>
+                    <option value="rice">水稻</option>
+                    <option value="wheat">小麦</option>
+                    <option value="corn">玉米</option>
+                    <option value="soybean">大豆</option>
+                    <option value="cotton">棉花</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="soil-nitrogen">土壤氮含量（%）：</label>
+                <input type="number" id="soil-nitrogen" step="0.1" placeholder="0-5">
+            </div>
+            <div class="form-group">
+                <label for="soil-phosphorus">土壤磷含量（%）：</label>
+                <input type="number" id="soil-phosphorus" step="0.1" placeholder="0-5">
+            </div>
+            <div class="form-group">
+                <label for="soil-potassium">土壤钾含量（%）：</label>
+                <input type="number" id="soil-potassium" step="0.1" placeholder="0-5">
+            </div>
+            <div class="form-group">
+                <label for="soil-ph">土壤pH值：</label>
+                <input type="number" id="soil-ph" step="0.1" placeholder="4-10">
+            </div>
+            <button id="fertilizer-btn" class="btn">推荐</button>
+            <div id="fertilizer-result" class="result">
+                请选择目标作物并输入土壤成分
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 AgriSens 智慧农业AI助手. 保留所有权利.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
